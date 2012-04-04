@@ -1,11 +1,7 @@
 class PostsController < ApplicationController
-  respond_to :json, :xml, :html
-
-  before_filter :load_resources, 
-    :only => %w(new create edit update)
 
   def index
-    @posts = Post.all
+    @posts = Post.where(:draft => false)
     respond_with @posts
   end
 
@@ -14,56 +10,10 @@ class PostsController < ApplicationController
     respond_with @post
   end
 
-  def new
-    @post = Post.new
-    respond_with @post
-  end
+protected
 
-  # GET /posts/1/edit
-  def edit
-    @post = Post.find(params[:id])
-  end
-
-  # POST /posts
-  # POST /posts.json
-  def create
-    @post = Post.new(params[:post])
-
-    if @post.save
-      flash[:notice] = 'Post was successfully created.' 
-    end
-
-    respond_with @post
-  end
-
-  # PUT /posts/1
-  # PUT /posts/1.json
-  def update
-    @post = Post.find(params[:id])
-    
-    if @post.update_attributes(params[:post])
-      flash[:notice] = 'Post was successfully updated.' 
-    end
-
-    respond_with @post
-  end
-
-  # DELETE /posts/1
-  # DELETE /posts/1.json
-  def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
-    end
-  end
-
-private
-  
-  def load_resources
-    @authors = User.all
+  def categories
     @categories = Category.all
   end
+
 end
