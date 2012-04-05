@@ -49,8 +49,17 @@
 
     <%= section  do %>
       <div class="field">
-        <%= f.label :permalink, "Permalink" %><br/>
-        <%= f.text_field :permalink, :size => 27 %>
+        <%= f.label :published_at %><br/>
+        <%= f.date_select :published_at, :use_short_month => true %>
+      </div>
+    <% end %>
+
+    <hr/>
+
+    <%= section  do %>
+      <div class="field">
+        <%= f.label :slug, "Set a custom post URL" %><br/>
+        <%= f.text_field :slug, :size => 38 %>
       </div>
     <% end %>
   </div>

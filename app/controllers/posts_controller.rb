@@ -1,7 +1,13 @@
 class PostsController < ApplicationController
 
+  before_filter :categories
+
   def index
-    @posts = Post.where(:draft => false)
+    @posts = Post.scoped
+    @posts = @category.posts if @category.present?    
+    @posts = @posts.search(params[:search]) if params[:search].present?
+    @posts = @posts.published
+  
     respond_with @posts
   end
 
@@ -13,6 +19,7 @@ class PostsController < ApplicationController
 protected
 
   def categories
+    @category = Category.find(params[:category_id]) if params[:category_id].present?
     @categories = Category.all
   end
 
