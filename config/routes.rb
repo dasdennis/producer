@@ -1,19 +1,21 @@
 Producer::Application.routes.draw do
-  resources :categories
-
-  root :to => 'pages#index'
-
   resources :posts, :only => [:index, :show] do
-    resources :comments, :only => [:create]
+    resources :comments, :only => [:index, :create]
   end
   
   namespace :admin do
     resources :posts
-    resources :categories, :except => [:show]
+    resources :categories
   end
 
+  match '/home'   => "pages#index",  :as => :home
+  match '/prices' => "pages#prices", :as => :prices
+  match '/tour'   => "pages#tour",   :as => :tour  
+
+  root :to => 'pages#index'
   get "pages/index"
 
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

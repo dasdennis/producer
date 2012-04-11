@@ -8,7 +8,9 @@ class Admin::PostsController < Admin::BaseController
 
   def show
     @post = Post.find(params[:id])
-    render :layout => "application"
+    respond_with @post do |format|
+      format.html { render :layout => "application" }
+    end
   end
 
   def new

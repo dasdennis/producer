@@ -32,4 +32,9 @@ class Admin::CategoriesController < Admin::BaseController
     respond_with @category, :location => admin_categories_path
   end
 
+  def show
+    @category = Category.find(params[:id])
+    respond_with @category
+  end
+
 end
