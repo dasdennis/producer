@@ -1,0 +1,23 @@
+<div class="image">
+  <div class="preview">
+    <%= link_to image_tag(@image.document.url(:medium)), @image.document.url, :target => "_blank" %>
+  </div>
+
+  <div class="info">
+    <p>
+      <b>Title:</b>
+      <%= @image.title %>
+      <span class="hint">
+        (<%= number_to_human_size @image.document_file_size %>)
+        <%= @image.document_content_type %>
+      </span>
+    </p>
+
+    <hr class="thick" />
+
+    <p>
+      <%= link_to 'Edit', edit_admin_image_path(@image), :class => "button" %>
+      <%= link_to 'Back', admin_images_path, :class => "button" %>
+    </p>
+  </div>
+</div>

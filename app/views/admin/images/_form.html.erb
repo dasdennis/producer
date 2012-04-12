@@ -1,0 +1,18 @@
+<%= form_for [:admin, @image]  do |f| %>
+  <%= error_messages_for @image %>
+
+  <div class="field">
+    <%= f.text_field :title, :placeholder => "Title" %>
+  </div>
+
+  <div class="field">
+    <%= f.file_field :document %>
+  </div>
+
+  <hr class="thick" />
+
+  <p>
+    <%= f.submit :class => "button" %> or 
+    <%= link_to "cancel", admin_images_path %>
+  </p>
+<% end %>

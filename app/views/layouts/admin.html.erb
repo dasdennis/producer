@@ -10,14 +10,12 @@
   <div id="wrapper">
     <div id="header">
       <div id="main-nav">
-        <ul>
-          <li><a>Dashboard</a></li>
-          <li><a>Posts</a></li>
-          <li><a>Media</a></li>
-          <li><a>Changelog</a></li>
-          <li><a>FAQ's</a></li>
-          <li><a>Inquiries</a></li>
-        </ul>
+        <%= menu do |m| %>
+          <%= m.dashboard 'Dashboard', "#" %>
+          <%= m.posts 'Posts', admin_posts_path %>
+          <%= m.images 'images', admin_images_path %>
+          <%= m.inquiries 'Inquiries', "#" %>
+        <% end %>
       </div>
     </div>
 
@@ -31,6 +29,7 @@
     </div>
   </div>
 
+  <%= yield :bottom %>
   <%#= javascript_include_tag :defaults %>
 </body>
 </html>

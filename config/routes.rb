@@ -4,6 +4,7 @@ Producer::Application.routes.draw do
   end
   
   namespace :admin do
+    resources :images    
     resources :posts
     resources :categories
   end

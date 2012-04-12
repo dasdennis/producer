@@ -1,0 +1,32 @@
+<h2>images</h2>
+
+<%- if @images.present? -%>
+
+  <table class="grid">
+    <% @images.each do |image| %>
+      <%= content_tag_for :tr, image, :class => cycle(:odd, :even) do %>
+        <td style="width:10%">
+          <%= link_to image_tag(image.document.url(:thumb), :class => "middle"), [:admin, image] %>
+        </td>
+        <td>
+          <%= link_to image.title, [:admin, image] %>
+        </td>
+        <td style="width:15%; text-align:right;">
+          <%= link_to_edit [:edit, :admin, image] %>
+          <%= link_to_destroy [:admin, image] %>
+        </td>
+      <% end %>
+    <% end %>
+  </table>
+
+<%- else -%>
+  <p>You don't have any image yet.</p>
+<%- end -%>
+
+<hr class="thick" />
+
+<div class="bar">
+  <div class="right">
+    <%= link_to 'New image', new_admin_image_path, :class => "button" %>
+  </div>
+</div>

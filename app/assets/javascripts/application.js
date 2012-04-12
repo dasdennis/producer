@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+
+// require jquery.textile.image
+
 //= require_tree .
