@@ -1,8 +1,8 @@
 module ApplicationHelper
 
   def error_messages_for(resource)
-    render partial: "shared/error_messages_for", 
-      locals: { resource: resource }
+    render :partial => "shared/error_messages", 
+      :locals => { :resource => resource}
   end
   
   def flash_messages
@@ -11,8 +11,12 @@ module ApplicationHelper
     end.join.html_safe
   end
 
+  def body_css_id
+    controller_path.gsub('/', '_').camelize(:lower) + "Body"
+  end
+  
   def textilize(text)
     RedCloth.new(text).to_html.html_safe
   end
-
+  
 end

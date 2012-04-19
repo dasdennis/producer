@@ -1,22 +1,36 @@
 Producer::Application.routes.draw do
+
   resources :posts, :only => [:index, :show] do
     resources :comments, :only => [:index, :create]
   end
-  
-  namespace :admin do
-    resources :images    
-    resources :posts
-    resources :categories
+
+  scope '/admin' do
+    devise_for :users, :controllers => {
+      :sessions => "admin/sessions",
+      :passwords => "admin/passwords"
+    }    
   end
+
+  namespace :admin do
+    resources :users, :except => [:show]
+    resources :images
+    resources :posts
+    resources :categories, :except => [:show]
+    resources :inquiries, :except => [:new, :create]
+  end
+
+  resources :inquiries, 
+    :only => [:new, :create], 
+    :path => "contact"
 
   match '/home'   => "pages#index",  :as => :home
   match '/prices' => "pages#prices", :as => :prices
-  match '/tour'   => "pages#tour",   :as => :tour  
+  match '/tour'   => "pages#tour",   :as => :tour
 
   root :to => 'pages#index'
   get "pages/index"
 
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

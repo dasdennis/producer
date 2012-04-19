@@ -8,11 +8,11 @@
 
   <hr/>
 
-  <h3><%= @post.comments.count %> Comments</h3>
+  <h3>Comments</h3>
 
   <div id="comments">
   <% if @post.comments.any? %>
-    <%= render @post.comments %>
+    <%= render :partial => @post.comments %>
   <% else %>
     <p>Nobody commented this post yet.</p>
   <% end %>

@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title    "Producer feed"
+  feed.title    "Rails feed"
   feed.updated  @posts.last.try(:updated_at)
 
   @posts.each do |post|
@@ -12,7 +12,7 @@ atom_feed do |feed|
       entry.author do |author|
         author.name post.author_full_name
       end
+
     end
   end
-  
 end

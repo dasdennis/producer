@@ -3,9 +3,10 @@
   <h3>Search</h3>
 
   <%= form_tag posts_path, :method => :get do %>
-    <%= search_field_tag :search, "",
+    <%= text_field_tag :search, "",
           :placeholder => "key words here",
           :size => 30,
+          :type => "search",
           :class => "search-field" %>
   <% end %>
 
@@ -20,7 +21,7 @@
   <h3>Keep in touch</h3>
 
   <ul class="squared">
-    <li>FOLLOW US ON <strong><%= link_to "TWITTER", "http://twitter.com/egenial" %></strong></li>
+    <li>FOLLOW US ON <strong style="color:#d7412c">TWITTER</strong></li>
     <li>SUBSCRIBE TO OUR <strong><%= link_to "FEED", posts_path(:format => :atom) %></strong></li>
   </ul>
 

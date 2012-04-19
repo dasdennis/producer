@@ -8,3 +8,11 @@ Category.create(name:"UI Design")
 Category.create(name:"Agile")
 Category.create(name:"Sysadmin")
 Category.create(name:"Frontend")
+
+User.create(
+  :first_name => "Admin", 
+  :last_name => "User", 
+  :email => "admin@producer.com", 
+  :password => "123456",
+  :password_confirmation => "123456"
+)

@@ -11,6 +11,16 @@ en:
   error_message_header: "%{count} error(s) prohibited this %{model} from being saved:"
   or: or
 
+  contacts:
+    new:
+      subjects:
+        signup: I have a question before I sign up
+        request: I want to request a feature
+        billing: I have a billing question
+        confused: I'm confused about how something works
+        broken: I think something is broken
+        other: Other
+
   admin:
     posts:
       new:
