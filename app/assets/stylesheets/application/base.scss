@@ -77,7 +77,7 @@ div#header{
   height: 213px;
   line-height: 213px;
   margin-bottom: 30px;
-  background: url(/images/separator.png) repeat-x bottom;
+  background: url("/assets/separator.png") repeat-x bottom;
 }
 
 div#header #logo{
@@ -95,7 +95,7 @@ div#header #main-nav {
 div#footer {
   padding-top: 10px;
   height: 150px;
-  background: url(/images/separator.png) repeat-x top;
+  background: url("/assets/separator.png") repeat-x top;
   text-align: center;
   clear: both;
   display: block;

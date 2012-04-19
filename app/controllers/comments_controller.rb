@@ -13,7 +13,10 @@ class CommentsController < ApplicationController
       flash[:alert] = "Fail to receive your comment."
     end
     
-    redirect_to @post
+    respond_with @comment do |format|
+      format.html { redirect_to @post }
+      format.js
+    end
   end
 
 end
