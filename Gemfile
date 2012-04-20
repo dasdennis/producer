@@ -1,15 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.0'
+gem 'rails'
 gem "will_paginate"
 gem 'sqlite3'
 gem "paperclip", "~> 3.0.2"
 gem 'RedCloth'
 gem 'menu_builder'
 gem 'devise'
+gem 'jquery-rails'
 
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'capistrano'  
 end
 
 group :assets do
@@ -17,16 +19,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
+group :production do
+  gem 'mysql2'
+end
