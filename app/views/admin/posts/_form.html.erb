@@ -68,12 +68,22 @@
     <hr/>
 
     <%= section t(".media") do %>
-      <div class="media">
-        <% @images.each do |a| %>
-          <%= link_to image_tag(a.document.url(:thumb)) , a.document.url, :target => "_blank"  %>
-        <% end %>
+      <div id="media" class="media">
+        <%= render :partial => "image", :collection => @images %>
       </div>
-    <% end %> 
+
+      <p>
+        <%= link_to "load more images",
+              images_admin_posts_path(:page => @images.next_page),
+              :remote => true,
+              :id => "more-images",
+              :class => "button" %>
+
+        <%= image_tag "loader.gif", 
+              :id => "images-loading", 
+              :class => "middle loading" %>
+      </p>
+    <% end %>
     
     <br/>   
   </div>
@@ -83,7 +93,17 @@
 <% content_for :bottom do%>
   <script type="text/javascript" charset="utf-8">
     $(function(){
-      $(".media").insertTextileImageTo("#post_body")      
+      
+      var toggleLoading = function() { 
+        $("#images-loading").toggle();
+      };
+      
+      $("document")
+        .bind("ajax:loading", toggleLoading)
+        .bind("ajax:complete", toggleLoading);
+      
+      $(".media").insertTextileImageTo("#post_body");
+      
     });
   </script>
 <% end %>

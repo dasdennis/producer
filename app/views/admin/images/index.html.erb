@@ -26,6 +26,10 @@
 <hr class="thick" />
 
 <div class="bar">
+  <div class="left">
+    <%= will_paginate @images %>
+  </div>
+  
   <div class="right">
     <%= link_to 'New image', new_admin_image_path, :class => "button" %>
   </div>

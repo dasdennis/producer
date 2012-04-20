@@ -1,0 +1,7 @@
+$("#media").append("<%= escape_javascript(render :partial => "image", :collection => @images) %>");
+
+<% unless @images.total_pages == @images.current_page %>
+  $("#more-images").attr("href", "<%= images_admin_posts_path(:page => @images.next_page) %>");
+<% else %>
+  $("#more-images").hide();
+<% end %>

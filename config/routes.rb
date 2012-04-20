@@ -14,9 +14,11 @@ Producer::Application.routes.draw do
   namespace :admin do
     resources :users, :except => [:show]
     resources :images
-    resources :posts
     resources :categories, :except => [:show]
     resources :inquiries, :except => [:new, :create]
+    resources :posts do 
+      get :images, :on => :collection
+    end
   end
 
   resources :inquiries, 

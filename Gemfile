@@ -1,12 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.0'
+gem "will_paginate"
 gem 'sqlite3'
 gem "paperclip", "~> 3.0.2"
 gem 'RedCloth'
 gem 'menu_builder'
-gem 'will_paginate'
 gem 'devise'
+
+group :development do
+  gem 'ruby-debug19', :require => 'ruby-debug'
+end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -26,6 +30,3 @@ gem 'jquery-rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'

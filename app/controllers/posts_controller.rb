@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.scoped
-    @posts = @category.posts if @category.present?    
+    @posts = @category.posts if @category.present?        
     @posts = @posts.search(params[:search]) if params[:search].present?
     @posts = @posts.published
   

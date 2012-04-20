@@ -1,6 +1,8 @@
 class Image < ActiveRecord::Base
   
   validates_presence_of :title
+
+  default_scope :order => "created_at DESC"
   
   has_attached_file :document, styles: {
     medium: "300x300#",

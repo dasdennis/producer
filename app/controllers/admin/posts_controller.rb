@@ -44,12 +44,20 @@ class Admin::PostsController < Admin::BaseController
     respond_with @post, :location => admin_posts_path
   end
 
+  def images
+    @images = paginated_images
+  end
+
 protected
 
   def load_resources
     @authors = User.all
     @categories = Category.all
-    @images = Image.order("created_at DESC")
+    @images = paginated_images
+  end
+
+  def paginated_images
+    Image.paginate(:page => params[:page], :per_page => 4)    
   end
 
 end
